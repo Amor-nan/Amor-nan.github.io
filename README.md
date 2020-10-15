@@ -1,4 +1,1 @@
 # Amor
-# Amor
-# Amor
-# Amor
