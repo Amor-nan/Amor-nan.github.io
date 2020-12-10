@@ -1,24 +1,30 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import (QApplication, QComboBox, QDialog,
+        QDialogButtonBox, QFormLayout, QGridLayout, QGroupBox, QHBoxLayout,
+        QLabel, QLineEdit, QMenu, QMenuBar, QPushButton, QSpinBox, QTextEdit,
+        QVBoxLayout)
 
-class App(QWidget):
+import sys
+
+class Dialog(QDialog):
+    NumGridRows = 3
+    NumButtons = 2
 
     def __init__(self):
-        super().__init__()
-        self.title = '根据音频拨号音识别出当前所拨号码'
-        self.left = 600
-        self.top = 300
-        self.width = 640
-        self.height = 480
-        self.initUI()
+        super(Dialog, self).__init__()
 
-    def initUI(self):
-        self.setWindowTitle(self.title)
-        self.setGeometry(self.left, self.top, self.width, self.height)
-        self.show()
+        b1=QPushButton("导入音频")
+        b2=QPushButton("分析比较")
+
+        mainLayout = QVBoxLayout()
+        mainLayout.addWidget(b1)
+        mainLayout.addWidget(b2)
+
+        self.setLayout(mainLayout)
+        self.setWindowTitle("根据音频拨号音识别出当前所拨号码")
+        self.setGeometry(100,100,320,200)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = App()
-    sys.exit(app.exec_())
+    dialog = Dialog()
+    sys.exit(dialog.exec_())
